@@ -1,0 +1,15 @@
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\DataAccess.deps.json
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\DataAccess.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\DataAccess.pdb
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfoInputs.cache
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfo.cs
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.pdb
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\BussinessObjects.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\BussinessObjects.pdb
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CopyComplete
