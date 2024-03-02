@@ -28,6 +28,9 @@ namespace BussinessObjects.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<OrderDetail>().HasKey(m => new { m.OrderId, m.ProductId });
+
             base.OnModelCreating(modelBuilder);
             // xóa bỏ các tiền tố AspNet trong các bảng Identity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
@@ -40,7 +43,12 @@ namespace BussinessObjects.Models
             }
         }
 
-        //public DbSet<MedicalFacility> MedicalFacilities { get; set; }
-        //public DbSet<ServicePriceList> ServicePriceLists { get; set; }
+        public virtual DbSet<Product> Product { get; set; } = null!;
+        public virtual DbSet<Category> Category { get; set; } = null!;
+        public virtual DbSet<Order> Order { get; set; } = null!;
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; } = null!;
+        public virtual DbSet<Feedback> Feedback { get; set; } = null!;
+        public virtual DbSet<Album> Album { get; set; } = null!;
+
     }
 }

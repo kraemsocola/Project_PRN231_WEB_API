@@ -1,0 +1,8 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+victorthemes.com	TRUE	/themes/seese/	FALSE	1999999999	yith_wcwl_session_b28175f677af74577661937c7e870049	%7B%22session_id%22%3A%22087ec5b398125e159678ac0ba71efc38%22%2C%22session_expiration%22%3A1711898486%2C%22session_expiring%22%3A1711894886%2C%22cookie_hash%22%3A%227d4fa69442728b85e95b0d0a72909455%22%7D
+victorthemes.com	TRUE	/themes/seese/	FALSE	1999999999	woocommerce_items_in_cart	1
+victorthemes.com	TRUE	/themes/seese/	FALSE	1999999999	wp_woocommerce_session_b28175f677af74577661937c7e870049	t_e9d3cb9947e51a8509993d74715967%7C%7C1709479287%7C%7C1709475687%7C%7C84fd5af8f24c544c33b834d98521d797
+victorthemes.com	TRUE	/themes/seese/	FALSE	1999999999	woocommerce_cart_hash	4cdd390429cd004696951c72d9ec3723
+victorthemes.com	TRUE	/	FALSE	1999999999	_uid	fwAAAWXhvHM+Cl2/AyetAg==
+
