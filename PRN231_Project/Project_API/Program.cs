@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Project_API.Map;
+using Repositories.AccountRepo;
+using Repositories.CategoryRepo;
 using System;
 using System.Text;
 
@@ -20,7 +23,7 @@ namespace Project_API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
             // cấu hình swagger
             builder.Services.AddSwaggerGen(option =>
             {
@@ -49,7 +52,10 @@ namespace Project_API
                     }
                  });
             });
-
+            builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("CORSPolicy", builder => builder.AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed((host) => true));
+            });
 
 
             builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ProjectDbContext>().AddDefaultTokenProviders();
@@ -82,9 +88,9 @@ namespace Project_API
                 options.SignIn.RequireConfirmedAccount = false; // email phải confirm mới được đăng nhập
             });
 
-            //builder.Services.AddScoped<IServicePriceListRepository, ServicePriceListRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             //builder.Services.AddScoped<IMedicalFacilityRepository, MedicalFacilityRepository>();
-            //builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
             builder.Services.AddAuthentication(options =>
             {
@@ -108,7 +114,7 @@ namespace Project_API
                 };
             });
 
-
+            builder.Services.AddScoped<ProjectDbContext>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -120,7 +126,7 @@ namespace Project_API
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
-
+            app.UseCors("CORSPolicy");
             app.UseAuthorization();
 
 

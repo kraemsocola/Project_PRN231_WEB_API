@@ -13,3 +13,4 @@ D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\ref\DataAcc
 D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\BussinessObjects.dll
 D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\BussinessObjects.pdb
 D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CopyComplete
+D:\Project_PRN231_WEB_API\PRN231_Project\DataAccess\bin\Debug\net6.0\appsettings.json

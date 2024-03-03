@@ -35,7 +35,7 @@ namespace BussinessObjects.Models
             // xóa bỏ các tiền tố AspNet trong các bảng Identity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
-                var tableName = entityType.GetTableName();
+                                var tableName = entityType.GetTableName();
                 if (tableName.StartsWith("AspNet"))
                 {
                     entityType.SetTableName(tableName.Substring(6));

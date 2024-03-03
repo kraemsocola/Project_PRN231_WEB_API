@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "k9jDIMAex8yIAMSQVPca9Msdr8vwRql3bTgQS9d8zHQ7cnSs27UYnBUs11TlpdSKiU+010CHbbD3VVoeMvLE0A==",
+  "dgSpecHash": "6gMQ4pt3sQ5yTPJR/V11TaND1WB33Y+dX3S07m8z6Q4k8MM2AYG8TgMqKLYlh6Q9UW8jiIoy8Nm4fZN5i8eGEw==",
   "success": true,
   "projectFilePath": "D:\\Project_PRN231_WEB_API\\PRN231_Project\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.0\\microsoft.aspnetcore.cryptography.keyderivation.6.0.0.nupkg.sha512",
