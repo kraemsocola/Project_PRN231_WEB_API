@@ -82,18 +82,19 @@ namespace DataAccess
         }
 
 
-        public static void Add(CategoryDto model)
+        public void Add(CategoryDto model)
         {
             try
             {
                 using (var context = new ProjectDbContext())
                 {
-                    var obj = new Category
+                    /*var obj = new Category
                     {
                         Name = model.Name
-                    };
+                    };*/
 
-                    /*var obj = _mapper.Map<Category>(model);*/
+                    var obj = _mapper.Map<Category>(model);
+
                     context.Category.Add(obj);
                     context.SaveChanges();
                 }

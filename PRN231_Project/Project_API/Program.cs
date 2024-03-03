@@ -4,9 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Project_API.AccountRepo;
 using Project_API.Map;
-using Repositories.AccountRepo;
-using Repositories.CategoryRepo;
 using System;
 using System.Text;
 
@@ -87,9 +86,7 @@ namespace Project_API
                 options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.SignIn.RequireConfirmedAccount = false; // email phải confirm mới được đăng nhập
             });
-
-            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            //builder.Services.AddScoped<IMedicalFacilityRepository, MedicalFacilityRepository>();
+            
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
             builder.Services.AddAuthentication(options =>

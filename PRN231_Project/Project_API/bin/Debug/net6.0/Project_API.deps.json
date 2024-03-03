@@ -9,9 +9,9 @@
       "Project_API/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
+          "BussinessObjects": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
-          "Repositories": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -563,24 +563,6 @@
         "runtime": {
           "BussinessObjects.dll": {}
         }
-      },
-      "DataAccess/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "BussinessObjects": "1.0.0"
-        },
-        "runtime": {
-          "DataAccess.dll": {}
-        }
-      },
-      "Repositories/1.0.0": {
-        "dependencies": {
-          "BussinessObjects": "1.0.0",
-          "DataAccess": "1.0.0"
-        },
-        "runtime": {
-          "Repositories.dll": {}
-        }
       }
     }
   },
@@ -1018,16 +1000,6 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "BussinessObjects/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DataAccess/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

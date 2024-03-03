@@ -2,7 +2,8 @@
 using BussinessObjects.Dto;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.CategoryRepo;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Project_API.Controllers
 {
@@ -10,12 +11,49 @@ namespace Project_API.Controllers
     [ApiController]
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _repo;
+        private readonly ProjectDbContext _context;
         private ResponseDto _response;
-        public CategoryController(ICategoryRepository repo)
+        private readonly IMapper _mapper;
+        public CategoryController(ProjectDbContext context, IMapper mapper)
         {
-            _repo = repo;
+            _context = context;
+            _mapper = mapper;
             _response = new ResponseDto();
+        }
+
+        [HttpGet("search/{text}")]
+        public ResponseDto SearchCategory(string text)
+        {
+            try
+            {
+                List<Category> categories = _context.Category.Where(x=>x.Name.Contains(text)).ToList(); 
+
+                _response.Result = categories;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
+
+        }
+
+        [HttpGet("{id}")]
+        public ResponseDto GetCategoryById(int id)
+        {
+            try
+            {
+                Category cate = _context.Category.Where(x => x.Id == id).First();
+
+                _response.Result = cate;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+            return _response;
 
         }
 
@@ -24,7 +62,9 @@ namespace Project_API.Controllers
         {
             try
             {
-                _response.Result = _repo.GetAll();
+                List<Category> cate = _context.Category.ToList();
+
+                _response.Result = cate;
             }
             catch (Exception ex)
             {
@@ -36,18 +76,13 @@ namespace Project_API.Controllers
         }
 
         [HttpPut]
-        public ResponseDto Put([FromBody] Category category)
+        public ResponseDto Put([FromBody] Category cate)
         {
             try
-            {
-                var check = _repo.GetById(category.Id);
-                if (check == null)
-                {
-                    _response.IsSuccess = false;
-                    return _response;
-                }
-                _repo.Update(category);
-                _response.Result = category;
+            {             
+                _context.Category.Update(cate);
+                _context.SaveChanges();
+                _response.Result = cate;
             }
             catch (Exception ex)
             {
@@ -62,8 +97,10 @@ namespace Project_API.Controllers
         {
             try
             {
-                _repo.Create(cateDto);
-                _response.Result = cateDto;
+                Category obj = _mapper.Map<Category>(cateDto);
+                _context.Category.Add(obj);
+                _context.SaveChanges();
+                _response.Result = _mapper.Map<CategoryDto>(obj);
             }
             catch (Exception ex)
             {
@@ -78,13 +115,9 @@ namespace Project_API.Controllers
         {
             try
             {
-                var check = _repo.GetById(id);
-                if (check == null)
-                {
-                    _response.IsSuccess = false;
-                    return _response;
-                }
-                _repo.Delete(check);
+                var cate = _context.Category.FirstOrDefault(x => x.Id == id);     
+                _context.Category.Remove(cate);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {

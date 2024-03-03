@@ -1112,34 +1112,6 @@
         "runtime": {
           "bin/placeholder/BussinessObjects.dll": {}
         }
-      },
-      "DataAccess/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "BussinessObjects": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/DataAccess.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DataAccess.dll": {}
-        }
-      },
-      "Repositories/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "BussinessObjects": "1.0.0",
-          "DataAccess": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Repositories.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Repositories.dll": {}
-        }
       }
     }
   },
@@ -2776,24 +2748,14 @@
       "type": "project",
       "path": "../BussinessObjects/BussinessObjects.csproj",
       "msbuildProject": "../BussinessObjects/BussinessObjects.csproj"
-    },
-    "DataAccess/1.0.0": {
-      "type": "project",
-      "path": "../DataAccess/DataAccess.csproj",
-      "msbuildProject": "../DataAccess/DataAccess.csproj"
-    },
-    "Repositories/1.0.0": {
-      "type": "project",
-      "path": "../Repositories/Repositories.csproj",
-      "msbuildProject": "../Repositories/Repositories.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 13.0.1",
+      "BussinessObjects >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.0",
-      "Repositories >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -2824,8 +2786,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Project_PRN231_WEB_API\\PRN231_Project\\Repositories\\Repositories.csproj": {
-              "projectPath": "D:\\Project_PRN231_WEB_API\\PRN231_Project\\Repositories\\Repositories.csproj"
+            "D:\\Project_PRN231_WEB_API\\PRN231_Project\\BussinessObjects\\BussinessObjects.csproj": {
+              "projectPath": "D:\\Project_PRN231_WEB_API\\PRN231_Project\\BussinessObjects\\BussinessObjects.csproj"
             }
           }
         }
