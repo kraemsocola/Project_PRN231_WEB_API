@@ -1112,6 +1112,22 @@
         "runtime": {
           "bin/placeholder/BussinessObjects.dll": {}
         }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "BussinessObjects": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
       }
     }
   },
@@ -2748,14 +2764,19 @@
       "type": "project",
       "path": "../BussinessObjects/BussinessObjects.csproj",
       "msbuildProject": "../BussinessObjects/BussinessObjects.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 13.0.1",
-      "BussinessObjects >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.0",
+      "Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -2786,8 +2807,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Project_PRN231_WEB_API\\PRN231_Project\\BussinessObjects\\BussinessObjects.csproj": {
-              "projectPath": "D:\\Project_PRN231_WEB_API\\PRN231_Project\\BussinessObjects\\BussinessObjects.csproj"
+            "D:\\Project_PRN231_WEB_API\\PRN231_Project\\Repository\\Repository.csproj": {
+              "projectPath": "D:\\Project_PRN231_WEB_API\\PRN231_Project\\Repository\\Repository.csproj"
             }
           }
         }

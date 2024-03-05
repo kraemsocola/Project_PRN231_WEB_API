@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Project_API.AccountRepo;
+using Repository.AccountRepo;
+using Repository.AlbumRepo;
 using Project_API.Map;
 using System;
 using System.Text;
@@ -88,6 +89,8 @@ namespace Project_API
             });
             
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+
 
             builder.Services.AddAuthentication(options =>
             {

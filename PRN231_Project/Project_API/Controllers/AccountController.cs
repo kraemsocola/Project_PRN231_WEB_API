@@ -1,7 +1,7 @@
 ﻿using BussinessObjects.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Project_API.AccountRepo;
+using Repository.AccountRepo;
 
 
 namespace Project_API.Controllers

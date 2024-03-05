@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BussinessObjects.Dto;
+using BussinessObjects.Dto.Category;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -115,7 +116,16 @@ namespace Project_API.Controllers
         {
             try
             {
-                var cate = _context.Category.FirstOrDefault(x => x.Id == id);     
+                var cate = _context.Category.FirstOrDefault(x => x.Id == id);
+
+                // xóa Product trước
+                var product = _context.Product.Where(x => x.Id == id).FirstOrDefault();
+                if (product != null)
+                {
+                    _context.Product.Remove(product);
+                    _context.SaveChanges();
+                }
+
                 _context.Category.Remove(cate);
                 _context.SaveChanges();
             }
