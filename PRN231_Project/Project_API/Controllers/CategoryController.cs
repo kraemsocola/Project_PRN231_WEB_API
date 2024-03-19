@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using BussinessObjects.Dto;
+using BussinessObjects.Dto.Album;
 using BussinessObjects.Dto.Category;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using Repository.AlbumRepo;
+using Repository.CategoryRepo;
 
 namespace Project_API.Controllers
 {
@@ -13,77 +15,33 @@ namespace Project_API.Controllers
     public class CategoryController : Controller
     {
         private readonly ProjectDbContext _context;
+        private ICategoryRepository _repository;
         private ResponseDto _response;
         private readonly IMapper _mapper;
-        public CategoryController(ProjectDbContext context, IMapper mapper)
+        public CategoryController(ProjectDbContext context, IMapper mapper, ICategoryRepository categoryRepository)
         {
             _context = context;
             _mapper = mapper;
             _response = new ResponseDto();
-        }
-
-        [HttpGet("search/{text}")]
-        public ResponseDto SearchCategory(string text)
-        {
-            try
-            {
-                List<Category> categories = _context.Category.Where(x=>x.Name.Contains(text)).ToList(); 
-
-                _response.Result = categories;
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
-        }
-
-        [HttpGet("{id}")]
-        public ResponseDto GetCategoryById(int id)
-        {
-            try
-            {
-                Category cate = _context.Category.Where(x => x.Id == id).First();
-
-                _response.Result = cate;
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
+            _repository = categoryRepository;
         }
 
         [HttpGet]
-        public ResponseDto Get()
+        public async Task<ActionResult<CategoryResponse>> GetCategory([FromQuery] CategoryRequest request)
         {
-            try
-            {
-                List<Category> cate = _context.Category.ToList();
-
-                _response.Result = cate;
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
+            var data = await _repository.GetCategory(request);
+            return Ok(data);
         }
 
         [HttpPut]
-        public ResponseDto Put([FromBody] Category cate)
+        public ResponseDto Put([FromBody] UpdateCategoryDto cate)
         {
             try
-            {             
-                _context.Category.Update(cate);
+            {
+                Category obj = _mapper.Map<Category>(cate);
+                _context.Category.Update(obj);
                 _context.SaveChanges();
-                _response.Result = cate;
+                _response.Result = _mapper.Map<UpdateCategoryDto>(obj);
             }
             catch (Exception ex)
             {
@@ -94,14 +52,14 @@ namespace Project_API.Controllers
         }
 
         [HttpPost]
-        public ResponseDto Post([FromBody] CategoryDto cateDto)
+        public ResponseDto Post([FromBody] CreateCategoryDto cateDto)
         {
             try
             {
                 Category obj = _mapper.Map<Category>(cateDto);
                 _context.Category.Add(obj);
                 _context.SaveChanges();
-                _response.Result = _mapper.Map<CategoryDto>(obj);
+                _response.Result = _mapper.Map<CreateCategoryDto>(obj);
             }
             catch (Exception ex)
             {

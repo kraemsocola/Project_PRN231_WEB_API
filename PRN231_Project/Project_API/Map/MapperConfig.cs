@@ -11,11 +11,14 @@ namespace Project_API.Map
     {
         public MapperConfig()
         {
-            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CreateCategoryDto>().ReverseMap();
+            CreateMap<Category, UpdateCategoryDto>().ReverseMap();
             CreateMap<Album, CreateAlbumDto>().ReverseMap();
             CreateMap<Album, UpdateAlbumDto>().ReverseMap();
             CreateMap<Product, CreateProductDto>().ReverseMap();
-            CreateMap<Product, UpdateProductDto>().ReverseMap();
+            CreateMap<Product, UpdateProductDto>()
+                .ForMember(x=>x.CategoryName, y=>y.MapFrom(src => src.Category.Name))   
+                .ReverseMap();
             CreateMap<OrderDetail, CreateOrderDetailDto>().ReverseMap();
             CreateMap<OrderDetail, UpdateOrderDetailDto>().ReverseMap();
         }

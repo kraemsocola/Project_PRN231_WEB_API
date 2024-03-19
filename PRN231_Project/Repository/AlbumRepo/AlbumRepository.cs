@@ -26,7 +26,7 @@ namespace Repository.AlbumRepo
         {
             try
             {   
-                var albumQuery = await _context.Album
+                var albumQuery = await _context.Album.Include(x => x.Product)
                     .Where(x=> string.IsNullOrWhiteSpace(request.KeyWords) 
                      || x.Image.Contains(request.KeyWords)).ToListAsync();
 
@@ -37,6 +37,10 @@ namespace Repository.AlbumRepo
                 if (request.ProductId != null)
                 {
                     albumQuery = albumQuery.Where(x => x.ProductId == request.ProductId).ToList();
+                }
+                if (request.Image != null)
+                {
+                    albumQuery = albumQuery.Where(x => x.Image.Contains(request.Image)).ToList();
                 }
 
                 var albumDtos = _mapper.Map<List<UpdateAlbumDto>>(albumQuery).Paginate(request).ToList();

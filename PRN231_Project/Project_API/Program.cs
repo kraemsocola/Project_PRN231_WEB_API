@@ -6,6 +6,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository.AccountRepo;
 using Repository.AlbumRepo;
+using Repository.CategoryRepo;
+using Repository.OrderRepo;
+using Repository.OrderDetailRepo;
+using Repository.ProductRepo;
 using Project_API.Map;
 using System;
 using System.Text;
@@ -28,7 +32,7 @@ namespace Project_API
             builder.Services.AddSwaggerGen(option =>
             {
                 option.SwaggerDoc("v1", new OpenApiInfo { Title = "Web Net 6 API", Version = "v1" });
-                option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                /*option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
                     Description = "Please enter a valid token",
@@ -50,7 +54,7 @@ namespace Project_API
                     },
                     new string[]{}
                     }
-                 });
+                 });*/
             });
             builder.Services.AddCors(opts =>
             {
@@ -62,7 +66,7 @@ namespace Project_API
 
             builder.Services.AddDbContext<ProjectDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
 
-            builder.Services.Configure<IdentityOptions>(options =>
+            /*builder.Services.Configure<IdentityOptions>(options =>
             {
                 // Thiết lập về Password
                 options.Password.RequireDigit = false; // Không bắt phải có số
@@ -86,13 +90,15 @@ namespace Project_API
                 options.SignIn.RequireConfirmedEmail = false;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
                 options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.SignIn.RequireConfirmedAccount = false; // email phải confirm mới được đăng nhập
-            });
+            });*/
             
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+			builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 
-            builder.Services.AddAuthentication(options =>
+			/*builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -112,9 +118,9 @@ namespace Project_API
                     // quantrong
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
                 };
-            });
+            });*/
 
-            builder.Services.AddScoped<ProjectDbContext>();
+			builder.Services.AddScoped<ProjectDbContext>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

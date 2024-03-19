@@ -67,3 +67,4 @@ D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\obj\Debug\net6.0\ref\Projec
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\AutoMapper.dll
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\Repository.dll
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\Repository.pdb
+D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\obj\Debug\net6.0\Project_API.MvcApplicationPartsAssemblyInfo.cs

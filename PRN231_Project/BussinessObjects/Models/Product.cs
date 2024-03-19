@@ -20,12 +20,10 @@ namespace BussinessObjects.Models
         public int Star { get; set; }
         [Required]
         public int Price { get; set; }
-        [Required]
-        public string Color { get; set; }
-        [Required]
-        public string Size { get; set; }
-        [Required]
-        public string Quantity { get; set; }
+		[Required]
+		public string Thumbnail { get; set; }
+		[Required]
+        public int Quantity { get; set; }
         [Required]
         public int CategoryId { get; set; }
         [Required]

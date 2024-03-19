@@ -1,8 +1,13 @@
 ﻿using AutoMapper;
 using BussinessObjects.Dto;
+using BussinessObjects.Dto.Album;
+using BussinessObjects.Dto.OrderDetail;
 using BussinessObjects.Dto.Product;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Repository.AlbumRepo;
+using Repository.ProductRepo;
 
 namespace Project_API.Controllers
 {
@@ -13,68 +18,23 @@ namespace Project_API.Controllers
         private readonly ProjectDbContext _context;
         private ResponseDto _response;
         private readonly IMapper _mapper;
-        public ProductController(ProjectDbContext context, IMapper mapper)
+		private IProductRepository _repository;
+		public ProductController(ProjectDbContext context, IMapper mapper, IProductRepository productRepository)
         {
             _context = context;
             _mapper = mapper;
             _response = new ResponseDto();
-        }
-
-        [HttpGet("search/{text}")]
-        public ResponseDto SearchProduct(string text)
-        {
-            try
-            {
-                List<Product> products = _context.Product.Where(x => x.Name.Contains(text)).ToList();
-
-                _response.Result = _mapper.Map<List<UpdateProductDto>>(products);
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
-        }
-
-        [HttpGet("{id}")]
-        public ResponseDto GetProductById(int id)
-        {
-            try
-            {
-                Product product = _context.Product.Where(x => x.Id == id).First();
-
-                _response.Result = _mapper.Map<UpdateProductDto>(product);
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
+            _repository = productRepository;
         }
 
         [HttpGet]
-        public ResponseDto Get()
+        public async Task<ActionResult<ProductResponse>> GetProduct([FromQuery]ProductRequest request)
         {
-            try
-            {
-                List<Product> products = _context.Product.ToList();
-
-                _response.Result = _mapper.Map<List<UpdateProductDto>>(products);
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-            }
-            return _response;
-
+            var data = await _repository.GetProduct(request);
+            return Ok(data);
         }
 
-        [HttpPut]
+		[HttpPut]
         public ResponseDto Put([FromBody] UpdateProductDto productDto)
         {
             try
