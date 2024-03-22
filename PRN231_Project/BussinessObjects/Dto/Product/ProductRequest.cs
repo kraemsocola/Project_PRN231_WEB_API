@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 namespace BussinessObjects.Dto.Product
 {
 	public class ProductRequest : PagingRequestBase
-	{
+	{	
+		public int CategoryId { get; set; }
+		public int PriceFrom { get; set; }
+		public int PriceTo { get; set; }
 	}
 }

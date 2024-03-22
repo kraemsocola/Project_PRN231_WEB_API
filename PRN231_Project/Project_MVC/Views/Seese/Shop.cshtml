@@ -1,0 +1,196 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Lấy đối tượng ResponseDto từ ViewBag
+    var products = ViewBag.Products;
+    var pages = ViewBag.Pages;
+    var categories = ViewBag.Categories;
+    int pageNumber = 1, categoryId = ViewBag.CategoryId, priceFrom = ViewBag.Min_Price, priceTo = ViewBag.Max_Price;
+}
+<!-- Seese Wrapper Start -->
+<div class="seese-wrapper">
+
+    <!-- Banner & Title Area Start -->
+    <div class="seese-title-area seese-extra-width">
+        <div class="seese-title-bg-outer">
+            <div class="container">
+
+                <div class="seese-title-default seese-padding-none" style="">
+                    <h1 class="page-title">
+                        Shop
+                    </h1>
+                    <nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="2" /><meta name="itemListOrder" content="Ascending" /><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin"><a href="../../index.html" rel="home"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end"><span itemprop="name">Shop</span><meta itemprop="position" content="2" /></li></ul></nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner & Title Area End -->
+    <!-- ContainerWrap Start-->
+    <div class="seese-containerWrap seese-extra-width">
+        <div class="seese-background seese-background-outer">
+            <div class="container">
+                <div class="seese-background-inner seese-padding-none seese-container-inner" style="">
+
+                    <div class="row seese-filterWrap seese-shop-default-filter">
+                        <div class="seese-filterTabs">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 seese-result-count">
+                                <p class="woocommerce-result-count">
+                                    Showing 1&ndash;@pages.ItemsPerPage of @pages.ToTalRecord results
+                                </p>
+                            </div>                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 seese-form-order-filter">
+                                <form class="woocommerce-ordering" method="get" action="Sort">
+                                    <select name="orderby" class="orderby" aria-label="Shop order">
+                                        <option value="popularity">Sort by popularity</option>
+                                        <option value="date" selected='selected'>Sort by latest</option>
+                                        <option value="price">Sort by price: low to high</option>
+                                        <option value="price-desc">Sort by price: high to low</option>
+                                    </select>
+                                    <input type="hidden" name="paged" value="1" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row seese-shop-default-content">
+
+                        <!-- Sidebar Column Start -->
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 seese-sidebar seese-shop-sidebar seese-shop-left-sidebar seese-leftCol">
+                            <div id="woocommerce_price_filter-3" class=" seese-widget sidebar-shop-widget woocommerce widget_price_filter">
+                                <h2 class="widget-title">Filter by price</h2>
+                                <form method="get" action="Filter">
+                                    <div class="price_slider_wrapper">
+                                        <div class="price_slider" style="display:none;"></div>
+                                        <div class="price_slider_amount" data-step="10">
+                                            <input type="number" id="category_id" name="category_id" value="@categoryId" data-min="10" hidden/>
+                                            <label class="screen-reader-text" for="min_price">Min price</label>
+                                            <input type="text" id="min_price" name="min_price" value="@priceFrom" data-min="10" placeholder="Min price" />
+                                            <label class="screen-reader-text" for="max_price">Max price</label>
+                                            <input type="text" id="max_price" name="max_price" value="@priceTo" data-max="200" placeholder="Max price" />
+                                            <button type="submit" class="button">Filter</button>
+                                            <div class="price_label" style="display:none;">
+                                                Price: <span class="from"></span> &mdash; <span class="to"></span>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div> <!-- end widget -->
+                            <div id="woocommerce_product_categories-4" class=" seese-widget sidebar-shop-widget woocommerce widget_product_categories">
+                                <h2 class="widget-title">Product Categories</h2>
+                                <ul class="product-categories">
+                                    <li class="cat-item cat-item-16"><a href="/Seese/Shop?pageNumber=@pageNumber&categoryId=0&priceFrom=@priceFrom&priceTo=@priceTo">All</a></li>
+                                    @foreach (var item in categories)
+                                    {                
+                                        <li class="cat-item cat-item-16"><a href="/Seese/Shop?pageNumber=@pageNumber&categoryId=@item.Id">@item.Name</a></li>
+                                    }
+                                </ul>
+
+                            </div>
+                            <div id="woocommerce_layered_nav-3" class=" seese-widget sidebar-shop-widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
+                                <h2 class="widget-title">Choose Colour</h2>
+                                <ul class="woocommerce-widget-layered-nav-list">
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexf9b2.html?filter_color=black">Black</a>
+                                        <span class="count">(12)</span>
+                                    </li>
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexf641.html?filter_color=blue">Blue</a>
+                                        <span class="count">(2)</span>
+                                    </li>
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexf017.html?filter_color=brown">Brown</a>
+                                        <span class="count">(5)</span>
+                                    </li>
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexebac.html?filter_color=gray">Gray</a>
+                                        <span class="count">(12)</span>
+                                    </li>
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexd611.html?filter_color=orange">Orange</a>
+                                        <span class="count">(4)</span>
+                                    </li>
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <a rel="nofollow" href="indexae77.html?filter_color=white">White</a>
+                                        <span class="count">(12)</span>
+                                    </li>
+                                </ul>
+                            </div> <!-- end widget -->
+                            
+                        </div><!-- end widget -->
+                            <!-- Sidebar Column End -->
+                            <!-- Content Area Start-->
+                            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 seese-has-sidebar seese-shop-has-sidebar seese-has-leftCol seese-sidebar-space-one seese-contentCol">
+                                <div class="row seese-content-area">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                        <div class="woocommerce">
+                                            <div class="seese-shop-wrapper woo-col-4 seese-ajax">
+
+
+
+
+                                                <div class="woocommerce-notices-wrapper"></div><div class="seese-shop-load-anim"><div class="line-scale-pulse-out"><div></div><div></div><div></div><div></div><div></div></div></div><div class="seese-products-full-wrap seese-prsc-shop-default" data-shopurl="index.html">
+                                                    <ul class="products columns-4">
+
+                                                        @foreach (var item in products)
+                                                        {
+                                                            <li class="pd-wh post-2360 product type-product status-publish has-post-thumbnail product_cat-part-and-parcel first instock sale taxable shipping-taxable purchasable product-type-simple">
+                                                                <div class="seese-product-img" style="background:">
+                                                                    <a href="../../product/money-wallet/index.html" class="woocommerce-LoopProduct-link"></a>
+                                                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2360  wishlist-fragment on-first-load"
+                                                                     data-fragment-ref="2360"
+                                                                     data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:2360,&quot;parent_product_id&quot;:2360,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;&quot;,&quot;product_added_text&quot;:&quot;Product added!&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:false,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                                    </div>
+
+                                                                    <div class="seese-loop-thumb seese-loop-thumb-has-hover">
+                                                                        <img width="600" height="700" data-src="@item.Thumbnail" src="../../wp-content/themes/seese/inc/plugins/woocommerce/images/lazy-load.jpg" alt="Image-2" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog wp-post-image seese-unveil-image" />
+                                                                        <div class="seese-unveil-loader ball-beat">
+                                                                            <div></div>
+                                                                        </div>
+                                                                        <div class="seese-hover-image-wrap">
+                                                                            <img width="500" height="570" src="@item.Thumbnail" alt="Image-1" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog seese-pr-hover-image" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="seese-product-cnt">
+                                                                    <a href="../../product/money-wallet/index.html">
+                                                                        <div class="seese-product-text">
+                                                                            <h3>@item.Name</h3>
+                                                                            <span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@item.Price</bdi></span></ins></span>
+                                                                        </div><div class="seese-atc-wrap"><a href="indexa4e6.html?add-to-cart=2360" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="2360" data-product_sku="" aria-label="Add to cart: &ldquo;Money Wallet&rdquo;" aria-describedby="" rel="nofollow">Add To Cart</a></div>
+                                                                    </a><div class="seese-posted-in-cats"><div class="seese-single-cat"><a href="../../product-category/part-and-parcel/index.html" rel="tag">@item.CategoryName</a></div></div>
+                                                                </div>
+                                                            </li>
+
+                                                        }
+
+                                                    </ul>
+
+                                                </div>
+
+
+                                            <div class='wp-pagenavi' role='navigation' id="paging">
+                                                @for (var i = 1; i <= pages.ToTalPage; i++)
+                                                {
+                                                    <a class="page larger" title="Page @i" href="/Seese/Shop?pageNumber=@i&categoryId=@categoryId&priceFrom=@priceFrom&priceTo=@priceTo">@i</a>
+                                                }
+                                            </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Content Area End-->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ContainerWrap End-->
+
+
+    </div>
+    <!-- Seese Wrapper End -->

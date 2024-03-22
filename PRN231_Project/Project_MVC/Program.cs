@@ -1,3 +1,7 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace Project_MVC
 {
     public class Program
@@ -8,7 +12,32 @@ namespace Project_MVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddHttpClient();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+            });
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    // tham số bên dưới
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    // quantrong
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
+                };
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,11 +53,13 @@ namespace Project_MVC
 
             app.UseRouting();
 
+           
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Seese}/{action=Login}");
 
             app.Run();
         }

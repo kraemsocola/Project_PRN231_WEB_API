@@ -1,0 +1,240 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Lấy đối tượng ResponseDto từ ViewBag
+    var product = ViewBag.UpdateProductDto as BussinessObjects.Dto.Product.UpdateProductDto;
+    var listP = ViewBag.ListUpdateProductDto;
+}
+
+<style>
+    .seese-single-product-showcase {
+        /* Thêm các quy tắc CSS tùy chỉnh ở đây */
+        background: #eee; /* Màu nền */
+        padding: 25px 0; /* Khoảng cách đệm bên trong */
+        position: relative; /* Viền */
+        /* Đảm bảo rằng mỗi <li> có cùng kích thước chiều cao */
+    }
+
+    /* Đảm bảo rằng mỗi h3 có chiều cao cố định */
+    li.pd-2wh h3 {
+        margin-top: 20px;
+        min-height: 60px; /* Đặt kích thước tối thiểu của mỗi h3 */
+    }
+
+    
+</style>
+
+<div class="seese-wrapper">
+    <!-- ContainerWrap Start-->
+    <div class="seese-containerWrap seese-extra-width">
+        <div class="seese-background seese-background-outer">
+            <div class="">
+                <div class="seese-background-inner seese-padding-none seese-container-inner" style="">
+                    <div class="row seese-shop-default-content">
+                        <!-- Content Area Start-->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 seese-no-sidebar seese-contentCol">
+                            <div class="row seese-content-area">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="woo-content ">
+                                        <div class="woocommerce-notices-wrapper"></div><div id="product-98" class="product type-product post-98 status-publish first instock product_cat-part-and-parcel product_cat-essentials product_tag-kitchen has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+
+
+                                            <div class="seese-single-product-showcase">
+
+                                                <div class="seese-single-product-menu">
+                                                    <div class="seese-single-next-link">
+                                                        <a href="../bottle-wood-cork/index.html" rel="next"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                                                    </div>
+                                                    <div class="seese-single-prev-link">
+                                                    </div>
+                                                </div>
+
+                                                <div class="container">
+                                                    <div class="row">
+
+                                                        <div class="seese-product-image-col col-lg-6 col-md-6 col-xs-12">
+
+                                                            <div class="row">
+
+                                                                <div class="seese-product-images-col col-lg-10 col-md-9 col-sm-9 col-xs-10" id="seese-product-images-col">
+
+                                                                    <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
+                                                                        <figure class="woocommerce-product-gallery__wrapper">
+                                                                            <div id="seese-product-images-slider" class="modal-enabled seese-gallery slick-slider slick-arrows-small">
+                                                                                <div class="woocommerce-product-gallery__image seese-zoom">
+                                                                                    <a href="@product.Thumbnail" class="seese-product-image-link" data-size="600x700" itemprop="image">
+                                                                                        <img width="590" height="688" src="@product.Thumbnail" />
+                                                                                        <i class="seese-product-image-icon seese-font seese-font-plus"></i>
+                                                                                    </a>
+
+                                                                                </div>
+                                                                                <div class="woocommerce-product-gallery__image seese-zoom">
+                                                                                    <a href="" class="seese-product-image-link" data-size="600x700" itemprop="image">
+                                                                                        <img width="590" height="688" src="" />
+                                                                                        <i class="seese-product-image-icon seese-font seese-font-plus">
+
+                                                                                        </i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </figure>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="seese-product-thumbnails-col col-lg-2 col-md-3 col-sm-3 col-xs-2">
+
+                                                                    <div class="thumbnails">
+                                                                        <div id="seese-product-thumbnails-slider">
+                                                                            <div class="woocommerce-product-gallery__image current">
+                                                                                <img width="100" height="100" src="../../wp-content/uploads/2016/10/Image-1-5-100x100.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" decoding="async" srcset="https://victorthemes.com/themes/seese/wp-content/uploads/2016/10/Image-1-5-100x100.jpg 100w, https://victorthemes.com/themes/seese/wp-content/uploads/2016/10/Image-1-5-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+                                                                            </div>
+                                                                            <div class="woocommerce-product-gallery__image ">
+                                                                                <img width="100" height="100" src="../../wp-content/uploads/2016/10/Image-2-3-100x100.jpg" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" decoding="async" loading="lazy" srcset="https://victorthemes.com/themes/seese/wp-content/uploads/2016/10/Image-2-3-100x100.jpg 100w, https://victorthemes.com/themes/seese/wp-content/uploads/2016/10/Image-2-3-150x150.jpg 150w" sizes="(max-width: 100px) 100vw, 100px" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="seese-product-summary-col col-lg-6 col-md-6 col-xs-12">
+                                                            <div class="summary entry-summary">
+
+                                                                <h1 class="product_title entry-title">@product.Name</h1>
+
+                                                                <p class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@product.Price</bdi></span></p>
+
+                                                                <div class="seese_single_product_excerpt">
+                                                                    <div class="woocommerce-product-details__short-description">
+                                                                        <p>@product.Title</p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="product_meta">
+                                                                    <span class="posted_in">Categories: <a href="../../product-category/part-and-parcel/index.html" rel="tag">@product.CategoryName</a></span>
+                                                                </div>
+
+                                                                <form class="cart" action="" method="post" enctype='multipart/form-data'>
+
+                                                                    <div class="quantity">
+                                                                        <label class="screen-reader-text" for="quantity_65e1f2770a3c2">Wooden Container Bowl quantity</label>
+                                                                        <input type="number"
+                                                                               id="quantity_65e1f2770a3c2"
+                                                                               class="input-text qty text"
+                                                                               name="quantity"
+                                                                               value="1"
+                                                                               aria-label="Product quantity"
+                                                                               size="4"
+                                                                               min="1"
+                                                                               max=""
+                                                                               step="1"
+                                                                               placeholder=""
+                                                                               inputmode="numeric"
+                                                                               autocomplete="off" />
+                                                                    </div>
+
+                                                                    <button type="submit" name="add-to-cart" value="98" class="single_add_to_cart_button button alt">Add to cart</button>
+
+                                                                </form>
+
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="woocommerce-tabs wc-tabs-wrapper">
+                                                <ul class="tabs wc-tabs" role="tablist">
+                                                    <li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
+                                                        <a href="#tab-description">
+                                                            Description
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
+                                                    <p>@product.Description</p>
+
+                                                </div>
+                                            </div>
+
+                                            <section class="related products container">
+
+                                                <h2>Related products</h2>
+
+                                                <ul class="products seese-related-product-slider owl-carousel" data-loop=false data-nav=true data-dots=true data-autoplay=false data-items=5>
+                                                    @foreach (var item in listP)
+                                                    {
+                                                        <li class="pd-2wh post-370 product type-product status-publish has-post-thumbnail product_cat-part-and-parcel product_cat-essentials product_tag-decor  instock taxable shipping-taxable purchasable product-type-simple">
+                                                            <div class="seese-product-img">
+                                                                <a href="#" class="woocommerce-LoopProduct-link"></a>
+                                                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-370  wishlist-fragment on-first-load"
+                                                                 data-fragment-ref="370"
+                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:370,&quot;parent_product_id&quot;:370,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;&quot;,&quot;product_added_text&quot;:&quot;Product added!&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:false,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                                </div>
+                                                                <div class="seese-loop-thumb seese-loop-thumb-has-hover">
+                                                                    <img data-product-id="@item.Id" width="600" height="700" data-src="@item.Thumbnail" src="../../wp-content/themes/seese/inc/plugins/woocommerce/images/lazy-load.jpg" alt="Image-2" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog wp-post-image seese-unveil-image" />
+                                                                    <div class="seese-unveil-loader ball-beat">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <div class="seese-hover-image-wrap">
+                                                                        <img data-product-id="@item.Id" width="500" height="570" src="@item.Thumbnail" alt="Image-1" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog seese-pr-hover-image" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="seese-product-cnt">
+
+                                                                <div class="seese-product-text">
+                                                                    <h3>@item.Name</h3>
+                                                                    <span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@item.Price</bdi></span></span>
+                                                                </div>
+
+                                                                <div class="seese-posted-in-cats">
+                                                                    <div class="seese-single-cat">
+                                                                        @item.CategoryName
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
+
+                                            </section>
+
+
+                                            <meta itemprop="url" content="index.html" />
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).on('click', '.seese-product-img img', function () {
+            // Lấy ID của sản phẩm từ thuộc tính data-product-id
+            var productId = $(this).attr('data-product-id');
+            console.log(productId);
+            // Chuyển hướng trang web đến trang chi tiết sản phẩm
+            window.location.href = 'Detail?id=' + productId;
+        });
+    </script>
+</div>

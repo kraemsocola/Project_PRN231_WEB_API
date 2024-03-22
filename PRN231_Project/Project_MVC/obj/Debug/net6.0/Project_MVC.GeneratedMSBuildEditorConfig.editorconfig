@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project_PRN231_WEB_API\PRN231_Project\Project_MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcSG9tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcU2hvcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Shared/Error.cshtml]

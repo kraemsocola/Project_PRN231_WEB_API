@@ -49,9 +49,17 @@ namespace Repository.ProductRepo
 				if (request.KeyWords != null)
 				{
 					productList = productList.Where(x => x.Name.Contains(request.KeyWords)).ToList();
-				}				
+				}
+                if (request.CategoryId != 0)
+                {
+                    productList = productList.Where(x => x.CategoryId == request.CategoryId).ToList();
+                }
+                if (request.PriceFrom >= 0 && request.PriceTo != 0)
+                {
+                    productList = productList.Where(x => x.Price >= request.PriceFrom && x.Price <= request.PriceTo).ToList();
+                }
 
-				var productDtos = _mapper.Map<List<UpdateProductDto>>(productList).Paginate(request).ToList();
+                var productDtos = _mapper.Map<List<UpdateProductDto>>(productList).Paginate(request).ToList();
 
 
 				var response = new ProductResponse
@@ -69,5 +77,41 @@ namespace Repository.ProductRepo
 			}
 
 		}
+
+		public Product GetProductById(int id)
+		{
+			try
+			{
+				var query = _context.Product
+									.Include(x => x.Category)
+									.FirstOrDefault(x => x.Id == id);
+
+				return query;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error getting product by ID: {ex.Message}");
+			}
+		}
+
+		public List<Product> GetProductByCategoryId(int id)
+		{
+			try
+			{
+				var product = GetProductById(id);
+				var query = _context.Product
+									.Include(x => x.Category)
+									.Where(x => x.CategoryId == product.CategoryId)
+									.ToList();
+
+				return query;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error getting product by CID: {ex.Message}");
+			}
+		}
+
+
 	}
 }

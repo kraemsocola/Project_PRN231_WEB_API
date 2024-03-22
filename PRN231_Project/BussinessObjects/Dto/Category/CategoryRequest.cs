@@ -10,9 +10,6 @@ namespace BussinessObjects.Dto.Category
 {
     public class CategoryRequest : PagingRequestBase
     {
-        
-        public int? Id { get; set; }
-        
-        public string? Name { get; set; }
+       
     }
 }

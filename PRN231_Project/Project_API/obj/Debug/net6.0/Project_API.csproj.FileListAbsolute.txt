@@ -68,3 +68,7 @@ D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\AutoMapper
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\Repository.dll
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\Repository.pdb
 D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\obj\Debug\net6.0\Project_API.MvcApplicationPartsAssemblyInfo.cs
+D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\System.Text.Json.dll
+D:\Project_PRN231_WEB_API\PRN231_Project\Project_API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

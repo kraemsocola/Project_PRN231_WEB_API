@@ -3,6 +3,7 @@ using BussinessObjects.Helper;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -21,15 +22,18 @@ namespace Repository.AccountRepo
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly ProjectDbContext _context;
         public AccountRepository(UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             IConfiguration configuration,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            ProjectDbContext context)
         {
-           _userManager = userManager;
-           _roleManager = roleManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _context = context; 
         }
 
         public async Task<IdentityResult> SignUpAsync(SignUpDto model)
@@ -104,8 +108,22 @@ namespace Repository.AccountRepo
                     signingCredentials: new SigningCredentials(authenKey, SecurityAlgorithms.HmacSha256)
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }       
+
+        public AppUser GetUserFromDatabase(string email)
+        {
+
+            var user = _context.Users.Where(x => x.Email == email).FirstOrDefault();
+
+            // Nếu user không tồn tại, hoặc nếu có bất kỳ xác thực nào khác (ví dụ: kiểm tra quyền truy cập), bạn cần xử lý tương ứng và trả về null hoặc một giá trị thích hợp.
+            if (user == null)
+            {
+                // Xử lý khi không tìm thấy người dùng
+                return null;
+            }
+
+            // Nếu tìm thấy người dùng, bạn có thể trả về thông tin người dùng
+            return user;
         }
-
-
     }
 }

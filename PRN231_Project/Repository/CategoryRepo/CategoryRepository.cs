@@ -31,17 +31,7 @@ namespace Repository.CategoryRepo
                     .Where(x => string.IsNullOrWhiteSpace(request.KeyWords)
                      || x.Name.Contains(request.KeyWords)).ToListAsync();
 
-                if (request.Id != null)
-                {
-                    query = query.Where(x => x.Id == request.Id).ToList();
-                }
-                if (request.Name != null)
-                {
-                    query = query.Where(x => x.Name.Contains(request.Name)).ToList();
-                }
-
                 var dtos = _mapper.Map<List<UpdateCategoryDto>>(query).Paginate(request).ToList();
-
 
                 var response = new CategoryResponse
                 {

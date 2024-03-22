@@ -1,6 +1,7 @@
 ﻿using BussinessObjects.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repository.AccountRepo;
 
 
@@ -16,6 +17,23 @@ namespace Project_API.Controllers
         {
             _repo = repo;
         }
+
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser(string email)
+        {
+            // Giải mã token để lấy ID người dùng
+            var user = _repo.GetUserFromDatabase(email);
+
+            // Truy vấn cơ sở dữ liệu để lấy thông tin người dùng từ ID
+
+            if (user == null)
+            {
+                return NotFound(); // Trả về HTTP 404 Not Found nếu không tìm thấy người dùng
+            }
+
+            return Ok(user); // Trả về thông tin người dùng
+        }
+
         [HttpPost("SignUp")]
         public async Task<IActionResult> SignUp(SignUpDto model)
         {
@@ -49,7 +67,7 @@ namespace Project_API.Controllers
             {
                 return Unauthorized(new { Success = false, Message = "Invalid username or password."});
             }
-            return Ok(new
+            return Ok(new SignInResponse
             {
                 Success = true,
                 Token = result,
