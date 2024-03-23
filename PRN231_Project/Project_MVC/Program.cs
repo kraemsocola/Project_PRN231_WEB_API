@@ -53,14 +53,13 @@ namespace Project_MVC
 
             app.UseRouting();
 
-           
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Seese}/{action=Login}");
-
+            name: "default",
+            pattern: "{controller=Seese}/{action=Home}");
             app.Run();
         }
     }

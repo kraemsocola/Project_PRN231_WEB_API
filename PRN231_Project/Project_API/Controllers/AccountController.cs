@@ -1,9 +1,11 @@
-﻿using BussinessObjects.Dto;
+﻿using BussinessObjects.Dto.LogInLogOut;
+using BussinessObjects.Dto.User;
+using BussinessObjects.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repository.AccountRepo;
-
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Project_API.Controllers
 {
@@ -12,26 +14,46 @@ namespace Project_API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountRepository _repo;
+        
 
         public AccountController(IAccountRepository repo)
         {
             _repo = repo;
-        }
+          
+        }    
 
         [HttpGet("GetUser")]
-        public async Task<IActionResult> GetUser(string email)
+        public IActionResult GetUser(string token)
         {
-            // Giải mã token để lấy ID người dùng
-            var user = _repo.GetUserFromDatabase(email);
+            // Lấy token từ session
+            
 
-            // Truy vấn cơ sở dữ liệu để lấy thông tin người dùng từ ID
-
-            if (user == null)
+            if (string.IsNullOrEmpty(token))
             {
-                return NotFound(); // Trả về HTTP 404 Not Found nếu không tìm thấy người dùng
+                return Unauthorized(); // Trả về lỗi 401 nếu không có token trong session
             }
 
-            return Ok(user); // Trả về thông tin người dùng
+            // Giải mã token để lấy các thông tin trong token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+            // Lấy thông tin người dùng từ token
+            var email = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value;
+            var phoneNumber = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone")?.Value;
+            var streetAddress = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/streetaddress")?.Value;
+            var role = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+
+            // Tại đây bạn có thể sử dụng userId hoặc userEmail để truy vấn thông tin của người dùng từ cơ sở dữ liệu hoặc từ nguồn dữ liệu khác
+            // Ví dụ: var user = _userService.GetUserById(userId);
+
+            // Trả về thông tin người dùng (ví dụ: id và email) trong response của API
+            return Ok(new UserResponse
+            {
+                Email = email,
+                PhoneNumber = phoneNumber,
+                Address = streetAddress,
+                Role = role
+            });
         }
 
         [HttpPost("SignUp")]
@@ -46,7 +68,7 @@ namespace Project_API.Controllers
                 var result = await _repo.SignUpAsync(model);
                 if (result.Succeeded)
                 {
-                    return Ok(new
+                    return Ok(new SignUpResponse
                     {
                         Success = true,
                         Message = "User registered successfully. "
@@ -67,6 +89,7 @@ namespace Project_API.Controllers
             {
                 return Unauthorized(new { Success = false, Message = "Invalid username or password."});
             }
+            
             return Ok(new SignInResponse
             {
                 Success = true,

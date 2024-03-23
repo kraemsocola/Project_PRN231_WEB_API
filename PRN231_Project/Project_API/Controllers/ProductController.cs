@@ -4,7 +4,10 @@ using BussinessObjects.Dto.Album;
 using BussinessObjects.Dto.OrderDetail;
 using BussinessObjects.Dto.Product;
 using BussinessObjects.Models;
+using BussinessObjects.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Repository.AlbumRepo;
 using Repository.ProductRepo;
@@ -26,15 +29,16 @@ namespace Project_API.Controllers
 			_response = new ResponseDto();
 			_repository = productRepository;
 		}
-
-		[HttpGet]
+        [AllowAnonymous]     
+        [HttpGet]
 		public async Task<ActionResult<ProductResponse>> GetProduct([FromQuery] ProductRequest request)
 		{
 			var data = await _repository.GetProduct(request);
 			return Ok(data);
 		}
-
-		[HttpGet("{id}")]
+        
+        [AllowAnonymous]
+        [HttpGet("{id}")]
 		public ActionResult<UpdateProductDto> GetProductById(int id)
 		{
 			var product = _repository.GetProductById(id);
@@ -46,8 +50,8 @@ namespace Project_API.Controllers
 			var productDto = _mapper.Map<UpdateProductDto>(product);
 			return productDto;
 		}
-
-		[HttpGet("Category/{id}")]
+        [AllowAnonymous]
+        [HttpGet("Category/{id}")]
 		public ActionResult<List<UpdateProductDto>> GetProductByCategoryId(int id)
 		{
 			var product = _repository.GetProductByCategoryId(id);

@@ -19,6 +19,9 @@ namespace Project_API.Map
             CreateMap<Product, UpdateProductDto>()
                 .ForMember(x=>x.CategoryName, y=>y.MapFrom(src => src.Category.Name))   
                 .ReverseMap();
+            CreateMap<ProductOrderBy, UpdateProductDto>()
+                .ForMember(x => x.CategoryName, y => y.MapFrom(src => src.Category.Name))
+                .ReverseMap();
             CreateMap<OrderDetail, CreateOrderDetailDto>().ReverseMap();
             CreateMap<OrderDetail, UpdateOrderDetailDto>().ReverseMap();
         }

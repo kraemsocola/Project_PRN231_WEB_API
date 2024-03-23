@@ -1,4 +1,4 @@
-﻿using BussinessObjects.Dto;
+﻿using BussinessObjects.Dto.LogInLogOut;
 using BussinessObjects.Helper;
 using BussinessObjects.Models;
 using Microsoft.AspNetCore.Http;

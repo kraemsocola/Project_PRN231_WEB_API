@@ -4,7 +4,10 @@
     var products = ViewBag.Products;
     var pages = ViewBag.Pages;
     var categories = ViewBag.Categories;
-    int pageNumber = 1, categoryId = ViewBag.CategoryId, priceFrom = ViewBag.Min_Price, priceTo = ViewBag.Max_Price;
+    int pageNumber = 1;
+    int categoryId = ViewBag.CategoryId;
+    int priceFrom = ViewBag.Min_Price;
+    int priceTo = ViewBag.Max_Price;
 }
 <!-- Seese Wrapper Start -->
 <div class="seese-wrapper">
@@ -18,7 +21,7 @@
                     <h1 class="page-title">
                         Shop
                     </h1>
-                    <nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="2" /><meta name="itemListOrder" content="Ascending" /><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin"><a href="../../index.html" rel="home"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end"><span itemprop="name">Shop</span><meta itemprop="position" content="2" /></li></ul></nav>
+                    <nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="2" /><meta name="itemListOrder" content="Ascending" /><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin"><a href="/Seese/Home" rel="home"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end"><span itemprop="name">Shop</span><meta itemprop="position" content="2" /></li></ul></nav>
                 </div>
             </div>
         </div>
@@ -37,12 +40,13 @@
                                     Showing 1&ndash;@pages.ItemsPerPage of @pages.ToTalRecord results
                                 </p>
                             </div>                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 seese-form-order-filter">
-                                <form class="woocommerce-ordering" method="get" action="Sort">
-                                    <select name="orderby" class="orderby" aria-label="Shop order">
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="date" selected='selected'>Sort by latest</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
+                                <form class="woocommerce-ordering" method="get" action="Shop">
+                                    <select name="sortType" class="orderby" aria-label="Shop order">
+                                        <option value="DateDesc">Sort by newest</option>
+                                        <option value="DateAsc">Sort by latest</option>
+                                        <option value="Popularity">Sort by popularity</option>
+                                        <option value="PriceAsc">Sort by price: low to high</option>
+                                        <option value="PriceDesc">Sort by price: high to low</option>
                                     </select>
                                     <input type="hidden" name="paged" value="1" />
                                 </form>
@@ -135,29 +139,30 @@
                                                         {
                                                             <li class="pd-wh post-2360 product type-product status-publish has-post-thumbnail product_cat-part-and-parcel first instock sale taxable shipping-taxable purchasable product-type-simple">
                                                                 <div class="seese-product-img" style="background:">
-                                                                    <a href="../../product/money-wallet/index.html" class="woocommerce-LoopProduct-link"></a>
+                                                                <a data-product-id="@item.Id" class="woocommerce-LoopProduct-link"></a>
                                                                     <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2360  wishlist-fragment on-first-load"
                                                                      data-fragment-ref="2360"
                                                                      data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:2360,&quot;parent_product_id&quot;:2360,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;&quot;,&quot;product_added_text&quot;:&quot;Product added!&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:false,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
                                                                     </div>
 
                                                                     <div class="seese-loop-thumb seese-loop-thumb-has-hover">
-                                                                        <img width="600" height="700" data-src="@item.Thumbnail" src="../../wp-content/themes/seese/inc/plugins/woocommerce/images/lazy-load.jpg" alt="Image-2" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog wp-post-image seese-unveil-image" />
+                                                                    <img data-product-id="@item.Id" width="600" height="700" data-src="@item.Thumbnail" src="../../wp-content/themes/seese/inc/plugins/woocommerce/images/lazy-load.jpg" alt="Image-2" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog wp-post-image seese-unveil-image" />
                                                                         <div class="seese-unveil-loader ball-beat">
                                                                             <div></div>
                                                                         </div>
                                                                         <div class="seese-hover-image-wrap">
-                                                                            <img width="500" height="570" src="@item.Thumbnail" alt="Image-1" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog seese-pr-hover-image" />
+                                                                        <img data-product-id="@item.Id" width="500" height="570" src="@item.Thumbnail" alt="Image-1" data-src-main="@item.Thumbnail" class="attachment-shop_catalog size-shop_catalog seese-pr-hover-image" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="seese-product-cnt">
-                                                                    <a href="../../product/money-wallet/index.html">
+                                                                <a data-product-id="@item.Id">
                                                                         <div class="seese-product-text">
                                                                             <h3>@item.Name</h3>
                                                                             <span class="price"><del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>40.00</bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&#36;</span>@item.Price</bdi></span></ins></span>
                                                                         </div><div class="seese-atc-wrap"><a href="indexa4e6.html?add-to-cart=2360" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="2360" data-product_sku="" aria-label="Add to cart: &ldquo;Money Wallet&rdquo;" aria-describedby="" rel="nofollow">Add To Cart</a></div>
-                                                                    </a><div class="seese-posted-in-cats"><div class="seese-single-cat"><a href="../../product-category/part-and-parcel/index.html" rel="tag">@item.CategoryName</a></div></div>
+                                                                    </a>
+                                                                    <div class="seese-posted-in-cats"><div class="seese-single-cat"><a href="../../product-category/part-and-parcel/index.html" rel="tag">@item.CategoryName</a></div></div>
                                                                 </div>
                                                             </li>
 
@@ -190,7 +195,15 @@
             </div>
         </div>
         <!-- ContainerWrap End-->
-
+    <script>
+        $(document).on('click', '.seese-product-img a', '.seese-product-cnt a', function () {
+            // Lấy ID của sản phẩm từ thuộc tính data-product-id
+            var productId = $(this).attr('data-product-id');
+            console.log(productId);
+            // Chuyển hướng trang web đến trang chi tiết sản phẩm
+            window.location.href = 'Detail?id=' + productId;
+        });
+    </script>
 
     </div>
     <!-- Seese Wrapper End -->

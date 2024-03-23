@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Project_PRN231_WEB_API\PRN231_Project\Project_MVC
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project_PRN231_WEB_API/PRN231_Project/Project_MVC/Views/Seese/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vlc2VcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

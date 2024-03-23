@@ -13,6 +13,7 @@ using Repository.ProductRepo;
 using Project_API.Map;
 using System;
 using System.Text;
+using Microsoft.AspNetCore.OData;
 
 namespace Project_API
 {
@@ -27,6 +28,7 @@ namespace Project_API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddControllers().AddOData(x => x.Select().Filter().Count().OrderBy().Expand().SetMaxTop(100));
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {

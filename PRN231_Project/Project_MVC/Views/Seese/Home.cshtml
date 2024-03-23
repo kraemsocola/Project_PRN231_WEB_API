@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var user = ViewBag.User;
+    
 }
 <div class="seese-wrapper">
 
@@ -133,8 +133,8 @@
 
                                                         <div class="woocommerce seese-products-65e1bc6137d31 ">
                                                             <div class="seese-shop-wrapper woo-col-4 seese-ajax">
-
-                                                                <div>@user.FirstName</div>
+                                                                
+                                                                
 
                                                                 <!--Filter home-->
                                                                 <div class="seese-filterWrap ">
@@ -189,7 +189,7 @@
                                                                         var productId = $(this).attr('data-product-id');
                                                                         console.log(productId);
                                                                         // Chuyển hướng trang web đến trang chi tiết sản phẩm
-                                                                        window.location.href = 'Detail?id=' + productId;
+                                                                        window.location.href = '/Seese/Detail?id=' + productId;
                                                                     });
 
 

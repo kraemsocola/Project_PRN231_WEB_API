@@ -29,6 +29,7 @@ namespace BussinessObjects.Models
         [Required]
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; }
+
     }
 }
     

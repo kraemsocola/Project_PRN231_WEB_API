@@ -3,6 +3,7 @@ using BussinessObjects.Dto;
 using BussinessObjects.Dto.Album;
 using BussinessObjects.Dto.Category;
 using BussinessObjects.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repository.AlbumRepo;
@@ -25,7 +26,7 @@ namespace Project_API.Controllers
             _response = new ResponseDto();
             _repository = categoryRepository;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<CategoryResponse>> GetCategory([FromQuery] CategoryRequest request)
         {

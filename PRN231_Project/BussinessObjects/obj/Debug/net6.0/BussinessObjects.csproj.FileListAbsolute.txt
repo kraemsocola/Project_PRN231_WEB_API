@@ -1,3 +1,4 @@
+D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\bin\Debug\net6.0\appsettings.json
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\bin\Debug\net6.0\BussinessObjects.deps.json
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\bin\Debug\net6.0\BussinessObjects.runtimeconfig.json
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\bin\Debug\net6.0\BussinessObjects.dll
@@ -12,4 +13,3 @@ D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\obj\Debug\net6.0\refin
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\obj\Debug\net6.0\BussinessObjects.pdb
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\obj\Debug\net6.0\BussinessObjects.genruntimeconfig.cache
 D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\obj\Debug\net6.0\ref\BussinessObjects.dll
-D:\Project_PRN231_WEB_API\PRN231_Project\BussinessObjects\bin\Debug\net6.0\appsettings.json

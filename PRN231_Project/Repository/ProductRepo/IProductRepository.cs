@@ -1,5 +1,6 @@
 ﻿using BussinessObjects.Dto.Product;
 using BussinessObjects.Models;
+using BussinessObjects.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,9 @@ namespace Repository.ProductRepo
 		Task<ProductResponse> GetProduct(ProductRequest request);
         Product GetProductById(int id);
 		List<Product> GetProductByCategoryId(int id);
+      
 
 
 
-	}
+    }
 }
